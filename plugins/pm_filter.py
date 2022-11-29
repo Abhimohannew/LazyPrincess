@@ -30,7 +30,7 @@ BUTTONS = {}
 SPELL_CHECK = {}
 
 
-@Client.on_message(filters.group & filters.text & filters.incoming)
+@Client.on_message(filters.group | filters.private & filters.text & filters.incoming)
 async def give_filter(client, message):
     k = await manual_filters(client, message)
     if k == False:
@@ -373,7 +373,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
-            await query.answer("Mere saamne jyada smart nhi banne ka sona 😒", show_alert=True)
+            await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒", show_alert=True)
             return
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
@@ -404,10 +404,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕↖️ Add Me To Your Groups ↗️➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('Share with Your Friends 📱', url='https://telegram.me/share/url?url=t.me/RBMoviesBot')
         ], [
             InlineKeyboardButton('🧞‍♀️ Search 🧐', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🔔 Updates 🤖', url='https://t.me/LazyDeveloper')
+            InlineKeyboardButton('🎬 Updates', url='https://t.me/FF_OTT_Updates')
         ], [
             InlineKeyboardButton('🙆🏻 Help 🦾', callback_data='help'),
             InlineKeyboardButton('♥️ About ♥️', callback_data='about')
@@ -438,7 +438,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons = [[
-            InlineKeyboardButton('🔔 Updates 🤖', url='https://t.me/LazyDeveloper'),
+            InlineKeyboardButton('🎬 Updates', url='https://t.me/FF_OTT_Updates'),
             InlineKeyboardButton('♥️ Source', callback_data='source')
         ], [
             InlineKeyboardButton('🏠 Home', callback_data='start'),
