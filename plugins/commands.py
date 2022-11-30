@@ -360,8 +360,8 @@ async def delete_all_index(bot, message):
 @Client.on_callback_query(filters.regex(r'^autofilter_delete'))
 async def delete_all_index_confirm(bot, message):
     await Media.collection.drop()
-    await message.answer('♥️ Thank You LazyDeveloper ♥️')
-    await message.message.edit('Succesfully Deleted All The Indexed Files.')
+    await message.answer('♥️ Thank You FF Group ♥️')
+    await message.message.edit('Successfully Deleted All The Indexed Files.')
 
 
 @Client.on_message(filters.command('settings'))
